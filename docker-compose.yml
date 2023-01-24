@@ -1,19 +1,20 @@
-version: '3'
+version: "3"
 services:
   web:
     build:
-      context: . # put it in the current directory
-      dockerfile: Dockerfile.dev # the new name.
+      context: .
+      dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
     volumes:
       - /app/node_modules
       - .:/app
   tests:
+    stdin_open: true
     build:
-      context: . # put it in the current directory
-      dockerfile: Dockerfile.dev # the new name.
+      context: .
+      dockerfile: Dockerfile.dev
     volumes:
       - /app/node_modules
       - .:/app
-    command: ["npm", "run", "test"] # make this execute the moment we run our tests
+    command: ["npm", "run", "test"]
